@@ -6,15 +6,17 @@ public class HealthBar : MonoBehaviour
 {
     [SerializeField]
     private Image _bar;
-    [SerializeField]
-    private float fill = 0;
+
+    GameObject _playerRef;
     void Update()
     {
-        _bar.fillAmount = fill;
+        if (_playerRef != null)
+            _bar.fillAmount = _playerRef.GetComponent<Player>().Health;
+        else
+            _bar.fillAmount = 0;
     }
     public void BindBarToPlayer(GameObject player)
     {
-        fill = player.GetComponent<Player>().Health;
-        _bar.fillAmount = fill;
+        _playerRef = player;
     }
 }

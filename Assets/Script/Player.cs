@@ -6,20 +6,17 @@ using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
-    private Animator _animator;
     private Rigidbody2D rb;
     private Vector2 movement;
-    public float Health { get; private set; } = 0.2f;
+    public float Health { get; private set; } = 1f;
     private float speed = 3f;
 
     private PhotonView view;
 
-
     void Start()
-    {
-        _animator = gameObject.GetComponent<Animator>();
+    {   
         rb = gameObject.GetComponent<Rigidbody2D>();
-        view = gameObject.GetComponent<PhotonView>();  
+        view = gameObject.GetComponent<PhotonView>();
     }
     void Update()
     {
@@ -27,17 +24,18 @@ public class Player : MonoBehaviour
         {
             RotateToCursor();
             MovePlayer();
-            if (Input.GetMouseButton(0) || Input.GetMouseButtonDown(0))
-                _animator.SetBool("IsShooting", true);
-            else if(Input.GetMouseButtonUp(0))
-                _animator.SetBool("IsShooting", false);
         }
     }
     public void TakeDamage(float _damage)
     {
         Health -= _damage;
+        if (Health <= 0)
+        {
+            PhotonNetwork.Destroy(gameObject);
+            Debug.Log("Player died");
+        }
     }
-   private void MovePlayer()
+    private void MovePlayer()
     {
         movement.x = Input.GetAxis("Horizontal");
         movement.y = Input.GetAxis("Vertical");

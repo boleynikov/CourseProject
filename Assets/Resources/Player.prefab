@@ -17,9 +17,11 @@ GameObject:
   - component: {fileID: 6265359781327068252}
   - component: {fileID: 1635679963}
   - component: {fileID: 4371290243401028046}
-  m_Layer: 0
+  - component: {fileID: 4992139448852413676}
+  - component: {fileID: 2589841131628835776}
+  m_Layer: 6
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -234,6 +236,39 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _bullet: {fileID: 5240615723836900919, guid: 0b4b55a443cf75946b13b3f7ad630aed, type: 3}
   _shootPoint: {fileID: 7622669007859439365}
+  startTimeBtwShots: 0.5
+--- !u!70 &4992139448852413676
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1450757623453733612}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.006822563, y: -0.20113052}
+  m_Size: {x: 1.2635088, y: 0.44548264}
+  m_Direction: 1
+--- !u!70 &2589841131628835776
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1450757623453733612}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.07333052, y: 0.05333265}
+  m_Size: {x: 0.63335896, y: 0.2111393}
+  m_Direction: 1
 --- !u!1 &4752887866199734385
 GameObject:
   m_ObjectHideFlags: 0
@@ -243,7 +278,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7622669007859439365}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ShootPoint
   m_TagString: Untagged
   m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
