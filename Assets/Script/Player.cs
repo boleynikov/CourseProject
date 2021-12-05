@@ -20,19 +20,20 @@ public class Player : MonoBehaviour
     }
     void Update()
     {
-        if (view.IsMine)
-        {
-            RotateToCursor();
-            MovePlayer();
-        }
+        if (!view.IsMine)
+            return;
+        RotateToCursor();
+        MovePlayer();
     }
-    public void TakeDamage(float _damage)
+    public void TakeDamage(GameObject bullet, float _damage)
     {
+        if (!view.IsMine)
+            return;
         Health -= _damage;
         if (Health <= 0)
         {
             PhotonNetwork.Destroy(gameObject);
-            Debug.Log("Player died");
+            Debug.Log($"Player {view.ViewID} died");
         }
     }
     private void MovePlayer()

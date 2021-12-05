@@ -29,7 +29,6 @@ public class CameraController : MonoBehaviour
             _camera.fieldOfView--;
        else if(Input.GetAxis("Mouse ScrollWheel") < 0 && _camera.fieldOfView < _scrollTo)
             _camera.fieldOfView++;
-
         if (_playerRef)
         {
             int currentX = Mathf.RoundToInt(_playerRef.position.x);
@@ -53,8 +52,7 @@ public class CameraController : MonoBehaviour
         _playerRef = GameObject.FindGameObjectWithTag("Player").transform;
         lastX = Mathf.RoundToInt(_playerRef.position.x);
         if (playerIsLeft)      
-            transform.position = new Vector3(_playerRef.position.x - _offset.x, _playerRef.position.y - _offset.y, transform.position.z);
-        
+            transform.position = new Vector3(_playerRef.position.x - _offset.x, _playerRef.position.y - _offset.y, transform.position.z);   
         else     
             transform.position = new Vector3(_playerRef.position.x + _offset.x, _playerRef.position.y + _offset.y, transform.position.z);
     }
