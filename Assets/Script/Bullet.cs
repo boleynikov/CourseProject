@@ -6,7 +6,7 @@ public class Bullet : MonoBehaviour
     private float speed = 30;
     private float lifetime = 0.8f;
     private float distance = 0.5f;
-    private float damage = 0.1f;
+    private float damage = 0.11f;
     [SerializeField]
     private LayerMask whatIsSolid;
 
@@ -17,10 +17,10 @@ public class Bullet : MonoBehaviour
         hitInfo = Physics2D.Raycast(transform.position, transform.up, distance, whatIsSolid);
         if (hitInfo.collider != null)
         {
-            if (hitInfo.collider.CompareTag("Player"))
-            {
-                hitInfo.collider.GetComponent<Player>().TakeDamage(gameObject,damage);
-            }
+            if (hitInfo.collider.CompareTag("Enemy"))            
+                hitInfo.collider.GetComponent<Enemy>().TakeDamage(damage);
+            else if (hitInfo.collider.CompareTag("Player"))
+                hitInfo.collider.GetComponent<Player>().TakeDamage(damage);
             Destroy(gameObject);
         }
         transform.Translate(Vector2.up * speed * Time.deltaTime);

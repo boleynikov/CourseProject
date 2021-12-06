@@ -6,9 +6,10 @@ using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
+    public float Health { get; private set; } = 1f;
+
     private Rigidbody2D rb;
     private Vector2 movement;
-    public float Health { get; private set; } = 1f;
     private float speed = 3f;
 
     private PhotonView view;
@@ -25,7 +26,7 @@ public class Player : MonoBehaviour
         RotateToCursor();
         MovePlayer();
     }
-    public void TakeDamage(GameObject bullet, float _damage)
+    public void TakeDamage(float _damage)
     {
         if (!view.IsMine)
             return;

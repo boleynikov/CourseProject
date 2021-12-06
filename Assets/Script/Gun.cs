@@ -32,12 +32,10 @@ public class Gun : MonoBehaviour
                 shootAbility = true;
                 if (Input.GetMouseButton(0) || Input.GetMouseButtonDown(0))
                 {
-
                     _animator.SetBool("IsShooting", true);
                     timeBeetweenShots = startTimeBtwShots;
                     shootAbility = false;
                     PhotonNetwork.Instantiate(_bullet.name, _shootPoint.position, transform.rotation);
-
                 }
             }
             else
